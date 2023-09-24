@@ -1,0 +1,14 @@
+# vertual DOM -
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+"createRoot" method creates a DOM like structure behind the scene(drishya) same as the brouwer's DOM that is vertual DOM 
+ WE can track the vertual dom structure and can compare with main dom and then can update as per need
+
+learn documentation 
+https://github.com/acdlite/react-fiber-architecture
