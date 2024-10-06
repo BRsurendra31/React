@@ -17,12 +17,12 @@ function App() {
       //console.log(counter);
     setCounter(counter+1)
     }
-      /*
+      
     // setCounter(prevCounter => prevCounter + 1)
     // setCounter(prevCounter => prevCounter + 1 )
     // setCounter(prevCounter => prevCounter + 1)
     // setCounter(prevCounter => prevCounter + 1)
-      */ // both work as same
+    //   // both work as same
     
   }
 
@@ -56,6 +56,17 @@ export default App
 
 /*
 
+what is React Hooks ?
+
+>Hooks are the new feature introduced in the React 16.8 version. 
+>It allows you to use state and other React features without writing a class. 
+>Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes.
+> we have built-in hooks like useState, useReduce, useEffect in react. But we can create custom hooks in react as per need.
+what is state ?
+
+> a JavaScript built-in object that stores data and information about a component that may change over the lifetime. 
+> when state chnages, it re-render the 
+
 you can see actual hooks used in react source code which is open sourse 
 
 react Hooks :
@@ -86,7 +97,7 @@ Hooks cannot be conditional
 
 Note: Hooks will not work in React class components.
 
-# whay hooks
+# why hooks
 
 you can add "state" to your functional components
 you share "state" and logic b/w components easier
