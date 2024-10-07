@@ -62,10 +62,12 @@ what is React Hooks ?
 >It allows you to use state and other React features without writing a class. 
 >Hooks are the functions which "hook into" React state and lifecycle features from function components. It does not work inside classes.
 > we have built-in hooks like useState, useReduce, useEffect in react. But we can create custom hooks in react as per need.
-what is state ?
+
+>what is state ?
 
 > a JavaScript built-in object that stores data and information about a component that may change over the lifetime. 
-> when state chnages, it re-render the 
+> when state chnages, it re-render the component
+> let say koi variable h x=5 and want to change it in x=10 , means state of variable x is changed from 5 to 10 > this is the state
 
 you can see actual hooks used in react source code which is open sourse 
 
