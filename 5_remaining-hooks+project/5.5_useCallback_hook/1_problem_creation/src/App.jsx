@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <h1>Learning useCallback ...</h1>
-        <ChaildA/>{/* we can see in console, first time childA is called(rendered) when app starts that's okay but problem is when i click on additiin button then then again childA is recalled(re-rendered and so on )  */}
+        <ChaildA/>{/* we can see in console, first time childA is called(rendered) when app starts that's okay but problem is when i click on additiin button then then again childA is recalled(re-rendered and so on jab ki childA ko button se koi relation nahi h  > we can solve this problem using useMemo by wrapping child component by memo  */}
       <h1>{add}</h1>
       <button onClick={()=>setAdd(add +1)}>Addition</button>
     </div>
