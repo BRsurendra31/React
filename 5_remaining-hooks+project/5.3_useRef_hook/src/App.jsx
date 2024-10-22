@@ -39,7 +39,7 @@ export default App
 #useRef() hook :
 
 >createRef  in class compo. 
->The useRef hook in React provides a way to create a mutable object that persists between renders. It can be used to store a value that doesn’t trigger a re-render when it changes.
+>The useRef hook in React provides a way to create a mutable object that persists between re-renders. It can be used to store a value that doesn’t trigger a re-render when it changes.
 
 > When you use useRef, it returns an object with a current property, which can hold any value (e.g., DOM elements, numbers, objects, etc.).
 

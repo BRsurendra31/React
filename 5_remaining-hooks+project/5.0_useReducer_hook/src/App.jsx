@@ -46,7 +46,7 @@ export default App
 
 syntax :
 
-const [state, dispatch] = useReducer(reducer, initialsytate)
+const [state, dispatch] = useReducer(reducer, initialstate)
        
 and , reducer(currentState, action)
 
