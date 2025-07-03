@@ -15,13 +15,13 @@ Example1
 // When a parent component updates its own state, it re-renders itself and all its children.
 
 function ChildA({ value }) {
-  console.log('ChildA rendered');
+  console.log('ChildA rendered'); // re-render when parent state changes 
   return <h2>ChildA (from props): {value}</h2>;
 }
 
 function ChildB() {
   const [childCount, setChildCount] = React.useState(0);
-  console.log('ChildB rendered');
+  console.log('ChildB rendered'); // re-renders when parent state change 
 
   return (
     <div>
@@ -59,6 +59,9 @@ export default Parent;
 Example2
 
 ```js
+
+When a child component changes its own state, only that child re-renders — the parent does not re-render.
+
 function Child() {
   const [count, setCount] = React.useState(0);
 
@@ -71,7 +74,7 @@ function Child() {
 }
 
 function Parent() {
-  console.log('Parent rendered');
+  console.log('Parent rendered'); // not re-renders
 
   return (
     <div>
