@@ -8,10 +8,6 @@ Each React component maintains its own state. When you call the state updater fu
 - 2. **Rendering Hierarchy:**
     - When a parent component updates its own state, it re-renders itself and all its children.
     - When a child component changes its own state, only that child re-renders — the parent does not re-render.
-- 3. **Optimized Re-renders:**
-React uses a virtual DOM and a reconciliation process to optimize rendering. It compares the virtual DOM with the real DOM to determine what has changed and only updates the necessary parts of the actual DOM.
-- 4. **React.memo:**
-You can further optimize component re-renders using React.memo, which prevents functional components from re-rendering if their props have not changed. This is useful for performance optimization in larger applications.
 
 Example
 
@@ -59,3 +55,10 @@ export default Parent;
 - So, the `Parent` component re-renders.
 - `ChildA` also re-renders because it receives the updated `parentCount` as a prop.
 - `ChildB` re-renders too — even though its own state or props haven’t changed — because it is **not wrapped with `React.memo`**.
+
+
+- 3. **Optimized Re-renders:**
+React uses a virtual DOM and a reconciliation process to optimize rendering. It compares the virtual DOM with the real DOM to determine what has changed and only updates the necessary parts of the actual DOM.
+- 4. **React.memo:**
+You can further optimize component re-renders using React.memo, which prevents functional components from re-rendering if their props have not changed. This is useful for performance optimization in larger applications.
+
