@@ -9,7 +9,7 @@ Each React component maintains its own state. When you call the state updater fu
     - When a parent component updates its own state, it re-renders itself and all its children.
     - When a child component changes its own state, only that child re-renders — the parent does not re-render.
 
-Example
+Example1
 
 ```js
 // When a parent component updates its own state, it re-renders itself and all its children.
@@ -49,13 +49,50 @@ function Parent() {
 export default Parent;
 
 ```
-### What Happens When You Click "Increment Parent"
+#### What Happens When You Click "Increment Parent"
 
 - The **parentCount** state in `Parent` changes.
 - So, the `Parent` component re-renders.
 - `ChildA` also re-renders because it receives the updated `parentCount` as a prop.
 - `ChildB` re-renders too — even though its own state or props haven’t changed — because it is **not wrapped with `React.memo`**.
 
+Example2
+
+```js
+function Child() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div>
+      <h2>Child Count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>Increment Child Count</button>
+    </div>
+  );
+}
+
+function Parent() {
+  console.log('Parent rendered');
+
+  return (
+    <div>
+      <h1>Parent Component</h1>
+      <Child />
+    </div>
+  );
+}
+
+export default Parent;
+
+```
+
+#### What Happens When You Click the Button Inside Child
+
+- The `Child` component updates its own state (`count`) when the button is clicked.
+- Only `Child` re-renders because its state changed.
+- The `Parent` does **not** re-render since its state or props didn’t change.
+- In the console, you'll see `"Parent rendered"` only once (on the initial render).
+
+</br>
 
 - 3. **Optimized Re-renders:**
 React uses a virtual DOM and a reconciliation process to optimize rendering. It compares the virtual DOM with the real DOM to determine what has changed and only updates the necessary parts of the actual DOM.
