@@ -6,8 +6,8 @@ When the state changes in a React component, only the specific component that ow
 - 1. **Component Ownership:**
 Each React component maintains its own state. When you call the state updater function (like setState from useState), it triggers a re-render of that specific component.
 - 2. **Rendering Hierarchy:**
-    - If a component that is part of a larger component tree changes its state, React will re-render that component and any of its child components.
-    - Parent components will not re-render unless their own state or props change.
+    - When a parent component updates its own state, it re-renders itself and all its children.
+    - When a child component changes its own state, only that child re-renders — the parent does not re-render.
 - 3. **Optimized Re-renders:**
 React uses a virtual DOM and a reconciliation process to optimize rendering. It compares the virtual DOM with the real DOM to determine what has changed and only updates the necessary parts of the actual DOM.
 - 4. **React.memo:**
@@ -16,33 +16,46 @@ You can further optimize component re-renders using React.memo, which prevents f
 Example
 
 ```js
-import React, { useState } from 'react';
+// When a parent component updates its own state, it re-renders itself and all its children.
 
-function ChildA({ count }) {
-  console.log('ChildA re-rendered');
-  return <div>Child A: {count}</div>;
+function ChildA({ value }) {
+  console.log('ChildA rendered');
+  return <h2>ChildA (from props): {value}</h2>;
 }
 
 function ChildB() {
-  console.log('ChildB re-rendered');
-  return <div>Child B</div>;
-}
-
-function Parent() {
-  const [count, setCount] = useState(0);
+  const [childCount, setChildCount] = React.useState(0);
+  console.log('ChildB rendered');
 
   return (
     <div>
-      <button onClick={() => setCount(count + 1)}>Increment Count</button>
-      <ChildA count={count} />
+      <h2>ChildB (own state): {childCount}</h2>
+      <button onClick={() => setChildCount(childCount + 1)}>Increment ChildB</button>
+    </div>
+  );
+}
+
+function Parent() {
+  const [parentCount, setParentCount] = React.useState(0);
+  console.log('Parent rendered');
+
+  return (
+    <div>
+      <h1>Parent Count: {parentCount}</h1>
+      <button onClick={() => setParentCount(parentCount + 1)}>Increment Parent</button>
+      
+      <ChildA value={parentCount} />
       <ChildB />
     </div>
   );
 }
 
 export default Parent;
+
 ```
-Explanation <br>
-- When the button is clicked, setCount updates the count state in the Parent component.
-- Only Parent and ChildA will re-render because ChildA receives count as a prop. ChildB will not re-render since it does not depend on count.
-- If you were to add state to ChildB, then it would re-render if its own state changes.
+### What Happens When You Click "Increment Parent"
+
+- The **parentCount** state in `Parent` changes.
+- So, the `Parent` component re-renders.
+- `ChildA` also re-renders because it receives the updated `parentCount` as a prop.
+- `ChildB` re-renders too — even though its own state or props haven’t changed — because it is **not wrapped with `React.memo`**.
