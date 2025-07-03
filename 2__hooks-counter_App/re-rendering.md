@@ -145,3 +145,14 @@ export default Parent;
 
 ```
 
+### Note:
+**Why we say "re-rendering" instead of just "rendering"?**
+
+- "Rendering" refers to the initial display of a component when it is first loaded on the screen.
+- "Re-rendering" happens after the initial render, when React needs to update the component because:
+      -its state has changed, or
+      -it received new props.
+
+
+
+
