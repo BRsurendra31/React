@@ -152,7 +152,25 @@ export default Parent;
 - "Re-rendering" happens after the initial render, when React needs to update the component because:
       -its state has changed, or
       -it received new props.
+- We say "re-render" to make it clear that the component was already on the page, and now React is updating it, not displaying it for the first time.
 
+Example:
+
+```js
+function Child() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Click Me</button>
+    </div>
+  );
+}
+
+// The first time Child appears on the screen = rendering
+//Every time you click the button and count updates = re-rendering
+```
 
 
 
