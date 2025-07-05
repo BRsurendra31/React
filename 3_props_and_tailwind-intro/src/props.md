@@ -1,10 +1,10 @@
-# PIXELS  
+### PIXELS  
 > for images  
 
-# devUI.org  
+### devUI.org  
 > for components like cart, sign in/up, etc and its source code  
 
-# props  
+## props  
 > props stands for properties.  
 > Props are arguments passed into React components.  
 > Props are also how you pass data from one component to another, as parameters.  
@@ -12,7 +12,7 @@
 > `props = attribute` in HTML  
 > `props = func argument`  
 
-# Example  
+### Example  
 Add a `"brand"` attribute to the `Car` element:
 
 ```jsx
@@ -56,6 +56,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<Garage />);
 ```
 
+</br>
 If you have a variable to send, and not a string as in the example above, you just put the variable name inside curly brackets:
 
 ### Example
